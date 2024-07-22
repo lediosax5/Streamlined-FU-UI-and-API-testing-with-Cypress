@@ -3,7 +3,7 @@ import headerPage from "../support/pages/headerPage";
 import registerPage from "../support/pages/registerPage";
 
 // -Tests
-describe('UI positive register', () => {
+describe('UI register', () => {
     it('Register', () => {
         cy.visit("");
         registerPage.typeUser("cami" + Date.now());
@@ -14,12 +14,6 @@ describe('UI positive register', () => {
         registerPage.selectYear("1980");
         registerPage.clickRegisterBtn();
         headerPage.verifyUser("cami")
-    });
-});
-
-describe('UI negative register', () => {
-    it('', () => {
-        
     });
 });
 

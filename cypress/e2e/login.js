@@ -4,7 +4,7 @@ import loginPage from "../support/pages/loginPage";
 import headerPage from "../support/pages/headerPage";
 
 // -Tests
-describe('UI positive login', () => {
+describe('UI login', () => {
     it.only('Login', () => {
         cy.visit("");
         registerPage.clickLoginBtn();
@@ -13,10 +13,6 @@ describe('UI positive login', () => {
         loginPage.clickLoginBtn();
         headerPage.verifyUser(Cypress.env().user);
     });
-});
-
-describe('UI negative login', () => {
-    
 });
 
 describe('API login', () => {
