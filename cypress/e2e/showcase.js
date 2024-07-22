@@ -2,10 +2,11 @@
 import registerPage from "../support/pages/registerPage";
 import loginPage from "../support/pages/loginPage";
 import headerPage from "../support/pages/headerPage";
+import consts from "../support/consts";
 
 // -Tests
 describe('UI register', () => {
-    it('Register', () => {
+    it('Register user', () => {
         cy.visit("");
         registerPage.typeUser("cami" + Date.now());
         registerPage.typePass("pass123" + "!");
@@ -14,7 +15,7 @@ describe('UI register', () => {
         registerPage.selectMonth("May");
         registerPage.selectYear("1980");
         registerPage.clickRegisterBtn();
-        headerPage.verifyUser("cami")
+        headerPage.verifyUser("cami");
     });
 });
 
@@ -27,7 +28,7 @@ describe('API register', () => {
         });
     });
 
-    it('Register user', () => {
+    it('API register user', () => {
         cy.registerUser(user.a.username, user.a.password, user.a.gender, user.a.day, user.a.month, user.a.year).then(response => {
             cy.log(response);
             expect(response.status).to.be.equal(201);
@@ -55,6 +56,26 @@ describe('UI login', () => {
     });
 });
 
+describe('UI negative login', () => {
+    beforeEach('Login page', () => {
+        cy.visit("");
+        registerPage.clickLoginBtn();
+    });
+
+    it('Login wrong password', () => {
+        loginPage.typeUser(Cypress.env().user);
+        loginPage.typePass("badpassword");
+        loginPage.clickLoginBtn();
+        loginPage.alerts(consts.loginPage.alertPass);
+    });
+    it('Login wrong credentials', () => {
+        loginPage.typeUser("guido10");
+        loginPage.typePass(Cypress.env().pass);
+        loginPage.clickLoginBtn();
+        loginPage.alerts(consts.loginPage.alertCredentials);
+    });
+});
+
 describe('API login', () => {
     it('API login', () => {
         cy.loginUser(Cypress.env().user, Cypress.env().pass).then(response => {
@@ -75,7 +96,7 @@ describe('POM API register, login and delete with validations and variable user'
         });
     });
 
-    it('Register user', () => {
+    it('API register, login and delete user', () => {
         cy.registerUser(user.a.username, user.a.password, user.a.gender, user.a.day, user.a.month, user.a.year)
         .then(response => {
             cy.log(response);
@@ -103,7 +124,7 @@ describe('POM API register, login and delete with validations and variable user'
     });
 });
 
-describe('nn', () => {
+/*describe('nn', () => {
     it('n1', () => {
 
     });
@@ -113,4 +134,4 @@ describe('nn', () => {
     it('n2', () => {
 
     });
-});
+});*/

@@ -22,6 +22,10 @@ class loginPage{
         cy.get(cPass).type(pass);
         cy.get(cLoginBtn).click({force:true});
     }
+
+    alerts (alert){
+        cy.get("body").should('contain', alert);
+    }
 }
 
 // -Export

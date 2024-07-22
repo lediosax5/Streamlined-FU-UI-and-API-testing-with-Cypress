@@ -1,4 +1,8 @@
 module.exports = {
+    loginPage: {
+        alertPass: 'Password must have a special character and a number',
+        alertCredentials: 'Credentials were not found'
+    },
     waitsPage: {
         alert5: 'Wait 5 more seconds',
         alert10: 'You have waited for ten seconds, CONGRATULATIONS',
