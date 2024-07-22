@@ -1,0 +1,10 @@
+{
+    "a": {
+        "username" : "guido01",
+        "password": "pass123!",
+        "gender": "male",
+        "day": "5",
+        "month": "May",
+        "year": "1980"
+    }
+}

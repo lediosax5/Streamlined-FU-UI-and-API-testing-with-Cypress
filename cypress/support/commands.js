@@ -23,3 +23,36 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const url = 'https://pushing-it.onrender.com';
+
+Cypress.Commands.add('registerUser', (username, password, gender, day, month, year) => {
+    cy.request({
+        method: 'POST',
+        url: `${url}/api/register`,
+        body: {
+            username : username,
+            password: password,
+            gender: gender,
+            day: day,
+            month: month,
+            year: year,
+        }
+    })
+})
+Cypress.Commands.add('loginUser', (username, password) => {
+    cy.request({
+        method: 'POST',
+        url: `${url}/api/login`,
+        body: {
+            username : username,
+            password: password,
+        }
+    })
+})
+Cypress.Commands.add('deleteUser', (user, token) => {
+    cy.request({
+        method: 'DELETE',
+        url: `${url}/api/deleteuser/${user}/`,
+        headers: { 'autorization': `Bearer ${token}`, },
+    })
+})

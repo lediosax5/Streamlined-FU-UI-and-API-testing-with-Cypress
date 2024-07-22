@@ -20,5 +20,11 @@ describe('UI negative login', () => {
 });
 
 describe('API login', () => {
-    
+    it.only('API login', () => {
+        cy.loginUser(Cypress.env().user, Cypress.env().pass).then(response => {
+            cy.log(response);
+            expect(response.status).to.be.equal(201);
+            expect(response.body.user.username).to.be.equal(Cypress.env().user);
+        });
+    });
 });
