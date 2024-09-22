@@ -4,7 +4,7 @@ import registerPage from "../support/pages/registerPage";
 
 // -Tests
 describe('UI register', () => {
-    it('Register', () => {
+    it.only('Register', () => {
         cy.visit("");
         registerPage.typeUser("cami" + Date.now());
         registerPage.typePass("pass123" + "!");
