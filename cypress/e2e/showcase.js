@@ -5,6 +5,7 @@ import headerPage from "../support/pages/headerPage";
 import consts from "../support/consts";
 import homePage from "../support/pages/homePage";
 import toDoListPage from "../support/pages/toDoListPage";
+import waitsPage from "../support/pages/waitsPage";
 
 // -Tests
 describe('UI register', () => {
@@ -139,7 +140,7 @@ describe('To do list', () => {
         homePage.toDoList();
     });
 
-    it.only('Create task', () => {
+    it('Create task', () => {
         toDoListPage.typeTask(task.task1);
         toDoListPage.clickSendBtn();
         cy.wait(900);
@@ -151,7 +152,7 @@ describe('To do list', () => {
         cy.wait(900);
     });
 
-    it.only('Cross out task', () => {
+    it('Cross out task', () => {
         toDoListPage.clickTask(task.task1);
         cy.wait(900);
         toDoListPage.clickTask(task.task2);
@@ -160,13 +161,37 @@ describe('To do list', () => {
         cy.wait(900);
     });
 
-    it.only('Delete task', () => {
+    it('Delete task', () => {
         toDoListPage.clickDeleteBtn(task.task1);
         cy.wait(900);
         toDoListPage.clickDeleteBtn(task.task2);
         cy.wait(900);
         toDoListPage.clickDeleteBtn(task.task3);
         cy.wait(900);
+    });
+});
+
+describe('Time tracker', () => {
+
+    beforeEach('Login, redirect and btn track', () => {
+        cy.visit("");
+        registerPage.clickLoginBtn();
+        loginPage.login(Cypress.env().user, Cypress.env().pass);
+        homePage.waits();
+        waitsPage.clickBtn();
+        waitsPage.loadingBtn(consts.waitsPage.loadingBtn);
+    });
+
+    it('Validate 5 seconds messages in real time', () => {
+        waitsPage.colorAlerts(consts.waitsPage.alert5);
+    });
+
+    it('Validate 10 seconds messages in real time', () => {
+        waitsPage.alerts(consts.waitsPage.alert10);
+    });
+
+    it('Validate 50 seconds messages in real time', () => {
+        waitsPage.alerts(consts.waitsPage.alert50),{timeout: 60000};
     });
 });
 
