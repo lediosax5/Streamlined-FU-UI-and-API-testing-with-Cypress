@@ -6,6 +6,7 @@ import consts from "../support/consts";
 import homePage from "../support/pages/homePage";
 import toDoListPage from "../support/pages/toDoListPage";
 import waitsPage from "../support/pages/waitsPage";
+import alertsPage from "../support/pages/alertsPage";
 
 // -Tests
 describe('UI register', () => {
@@ -192,6 +193,31 @@ describe('Time tracker', () => {
 
     it('Validate 50 seconds messages in real time', () => {
         waitsPage.alerts(consts.waitsPage.alert50),{timeout: 60000};
+    });
+});
+
+describe('Alerts, prompts and confirmations pop ups', () => {
+
+    beforeEach('Login and redirect', () => {
+        cy.visit("");
+        registerPage.clickLoginBtn();
+        loginPage.login(Cypress.env().user, Cypress.env().pass);
+        homePage.alerts();
+    });
+
+    it.only('Window alert validation', () => {
+        alertsPage.handleAlert("This is an alert message");
+        alertsPage.clickAlertBtn();
+    });
+
+    it.only('Window prompt validation', () => {
+        alertsPage.handlePrompt("Mensaje de prueba");
+        alertsPage.clickPromptBtn();
+    });
+
+    it.only('Window confirmation validation', () => {
+        alertsPage.handleConfirmation("This is a confirmation message");
+        alertsPage.clickConfirmationBtn();
     });
 });
 
