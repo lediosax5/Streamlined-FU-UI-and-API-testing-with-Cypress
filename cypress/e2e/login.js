@@ -5,7 +5,7 @@ import headerPage from "../support/pages/headerPage";
 
 // -Tests
 describe('UI login', () => {
-    it.only('Login', () => {
+    it('Login', () => {
         cy.visit("");
         registerPage.clickLoginBtn();
         loginPage.typeUser(Cypress.env().user);
@@ -16,7 +16,7 @@ describe('UI login', () => {
 });
 
 describe('API login', () => {
-    it.only('API login', () => {
+    it('API login', () => {
         cy.loginUser(Cypress.env().user, Cypress.env().pass).then(response => {
             cy.log(response);
             expect(response.status).to.be.equal(201);

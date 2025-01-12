@@ -205,17 +205,17 @@ describe('Alerts, prompts and confirmations pop ups', () => {
         homePage.alerts();
     });
 
-    it.only('Window alert validation', () => {
+    it('Window alert validation', () => {
         alertsPage.handleAlert("This is an alert message");
         alertsPage.clickAlertBtn();
     });
 
-    it.only('Window prompt validation', () => {
+    it('Window prompt validation', () => {
         alertsPage.handlePrompt("Mensaje de prueba");
         alertsPage.clickPromptBtn();
     });
 
-    it.only('Window confirmation validation', () => {
+    it('Window confirmation validation', () => {
         alertsPage.handleConfirmation("This is a confirmation message");
         alertsPage.clickConfirmationBtn();
     });

@@ -4,7 +4,7 @@ import registerPage from "../support/pages/registerPage";
 
 // -Tests
 describe('UI register', () => {
-    it.only('Register', () => {
+    it('Register', () => {
         cy.visit("");
         registerPage.typeUser("cami" + Date.now());
         registerPage.typePass("pass123" + "!");
@@ -26,7 +26,7 @@ describe('API register', () => {
         });
     });
 
-    it.only('Register user', () => {
+    it('Register user', () => {
         cy.registerUser(user.a.username, user.a.password, user.a.gender, user.a.day, user.a.month, user.a.year).then(response => {
             cy.log(response);
             expect(response.status).to.be.equal(201);
