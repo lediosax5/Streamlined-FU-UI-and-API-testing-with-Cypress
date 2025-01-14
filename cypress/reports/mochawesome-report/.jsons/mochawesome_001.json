@@ -1,0 +1,144 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-14T04:39:24.304Z",
+    "end": "2025-01-14T04:39:26.910Z",
+    "duration": 2606,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6748582c-0987-45ca-963d-11f9130206eb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\register.js",
+      "file": "cypress\\e2e\\register.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "96a2c24c-44ba-43a9-8084-1e6c7bac295d",
+          "title": "UI register",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Register",
+              "fullTitle": "UI register Register",
+              "timedOut": null,
+              "duration": 1898,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\n_registerPage.default.typeUser(\"cami\" + Date.now());\n_registerPage.default.typePass(\"pass123\" + \"!\");\n_registerPage.default.checkGender(\"Female\");\n_registerPage.default.selectDay(31);\n_registerPage.default.selectMonth(\"May\");\n_registerPage.default.selectYear(\"1980\");\n_registerPage.default.clickRegisterBtn();\n_headerPage.default.verifyUser(\"cami\");",
+              "err": {},
+              "uuid": "8a30f68f-3a28-4e04-912d-47a122d3269c",
+              "parentUUID": "96a2c24c-44ba-43a9-8084-1e6c7bac295d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8a30f68f-3a28-4e04-912d-47a122d3269c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1898,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "760da347-6d81-48c7-b2f6-448a3fb54b34",
+          "title": "API register",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Register user",
+              "fullTitle": "API register Register user",
+              "timedOut": null,
+              "duration": 360,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.registerUser(user.a.username, user.a.password, user.a.gender, user.a.day, user.a.month, user.a.year).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.newUser.username).to.be.equal(user.a.username);\n});",
+              "err": {},
+              "uuid": "6b536557-fb54-409f-9d60-6676c56c79c3",
+              "parentUUID": "760da347-6d81-48c7-b2f6-448a3fb54b34",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6b536557-fb54-409f-9d60-6676c56c79c3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 360,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\mochawesome-report\\.jsons",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

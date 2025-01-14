@@ -1,0 +1,550 @@
+{
+  "stats": {
+    "suites": 9,
+    "tests": 16,
+    "passes": 16,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-14T04:39:28.368Z",
+    "end": "2025-01-14T04:40:35.102Z",
+    "duration": 66734,
+    "testsRegistered": 16,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b84110f7-adf1-457a-aa30-91df8daae50c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\showcase.js",
+      "file": "cypress\\e2e\\showcase.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1b9a34de-9abe-4de5-8217-d1d2c19b00cf",
+          "title": "UI register",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Register user",
+              "fullTitle": "UI register Register user",
+              "timedOut": null,
+              "duration": 1849,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\n_registerPage.default.typeUser(\"cami\" + Date.now());\n_registerPage.default.typePass(\"pass123\" + \"!\");\n_registerPage.default.checkGender(\"Female\");\n_registerPage.default.selectDay(31);\n_registerPage.default.selectMonth(\"May\");\n_registerPage.default.selectYear(\"1980\");\n_registerPage.default.clickRegisterBtn();\n_headerPage.default.verifyUser(\"cami\");",
+              "err": {},
+              "uuid": "b4dbb06e-2536-4aba-92d4-6528c2f47c93",
+              "parentUUID": "1b9a34de-9abe-4de5-8217-d1d2c19b00cf",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b4dbb06e-2536-4aba-92d4-6528c2f47c93"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1849,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "b868b081-b4e8-4f01-9f62-1b8cc7d5e91e",
+          "title": "API register",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "API register user",
+              "fullTitle": "API register API register user",
+              "timedOut": null,
+              "duration": 355,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.registerUser(user.a.username, user.a.password, user.a.gender, user.a.day, user.a.month, user.a.year).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.newUser.username).to.be.equal(user.a.username);\n});",
+              "err": {},
+              "uuid": "25a9e13b-5899-4eb8-bc7e-a0c7787741dd",
+              "parentUUID": "b868b081-b4e8-4f01-9f62-1b8cc7d5e91e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "25a9e13b-5899-4eb8-bc7e-a0c7787741dd"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 355,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "b93b1ce3-27a0-4bb9-aadc-2d8a8e8f1687",
+          "title": "UI login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login",
+              "fullTitle": "UI login Login",
+              "timedOut": null,
+              "duration": 1090,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\n_registerPage.default.clickLoginBtn();\n_loginPage.default.typeUser(Cypress.env().user);\n_loginPage.default.typePass(Cypress.env().pass);\n_loginPage.default.clickLoginBtn();\n_headerPage.default.verifyUser(Cypress.env().user);",
+              "err": {},
+              "uuid": "7a38d5bb-5ece-4974-9ad9-69a47f8d8629",
+              "parentUUID": "b93b1ce3-27a0-4bb9-aadc-2d8a8e8f1687",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7a38d5bb-5ece-4974-9ad9-69a47f8d8629"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1090,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "7f958a9b-e761-408e-843a-a1dee71b8605",
+          "title": "UI negative login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login wrong password",
+              "fullTitle": "UI negative login Login wrong password",
+              "timedOut": null,
+              "duration": 894,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_loginPage.default.typeUser(Cypress.env().user);\n_loginPage.default.typePass(\"badpassword\");\n_loginPage.default.clickLoginBtn();\n_loginPage.default.alerts(_consts.default.loginPage.alertPass);",
+              "err": {},
+              "uuid": "616a611f-a13a-45bb-81a9-6a1976434461",
+              "parentUUID": "7f958a9b-e761-408e-843a-a1dee71b8605",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login wrong credentials",
+              "fullTitle": "UI negative login Login wrong credentials",
+              "timedOut": null,
+              "duration": 1060,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_loginPage.default.typeUser(\"guido10\");\n_loginPage.default.typePass(Cypress.env().pass);\n_loginPage.default.clickLoginBtn();\n_loginPage.default.alerts(_consts.default.loginPage.alertCredentials);",
+              "err": {},
+              "uuid": "055fdd3f-8744-438a-8e9f-854e9f184f87",
+              "parentUUID": "7f958a9b-e761-408e-843a-a1dee71b8605",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "616a611f-a13a-45bb-81a9-6a1976434461",
+            "055fdd3f-8744-438a-8e9f-854e9f184f87"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1954,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "5301de3e-2f98-4aab-844d-38566371bc16",
+          "title": "API login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "API login",
+              "fullTitle": "API login API login",
+              "timedOut": null,
+              "duration": 767,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginUser(Cypress.env().user, Cypress.env().pass).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.user.username).to.be.equal(Cypress.env().user);\n});",
+              "err": {},
+              "uuid": "57098945-bd86-44b6-8000-3f0a7488078b",
+              "parentUUID": "5301de3e-2f98-4aab-844d-38566371bc16",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "57098945-bd86-44b6-8000-3f0a7488078b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 767,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "bbe86c63-bfeb-44ad-96bc-da43e32ddbbd",
+          "title": "API register, login and delete with validations and variable user",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "API register, login and delete user",
+              "fullTitle": "API register, login and delete with validations and variable user API register, login and delete user",
+              "timedOut": null,
+              "duration": 752,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.registerUser(user.a.username, user.a.password, user.a.gender, user.a.day, user.a.month, user.a.year).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.newUser.username).to.be.equal(user.a.username);\n});\ncy.loginUser(user.a.username, user.a.password).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.user.username).to.be.equal(user.a.username);\n  token = response.body.token;\n  window.localStorage.setItem(\"token\", token);\n  window.localStorage.setItem(\"user\", response.body.user.username);\n  window.localStorage.setItem(\"userId\", response.body.user._id);\n});\ncy.visit(\"\");",
+              "err": {},
+              "uuid": "8bb7b2c0-8eca-42ff-b113-d6c68ee18d83",
+              "parentUUID": "bbe86c63-bfeb-44ad-96bc-da43e32ddbbd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8bb7b2c0-8eca-42ff-b113-d6c68ee18d83"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 752,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "f098fb32-9abd-4667-bf3a-c34ffbb71029",
+          "title": "To do list",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create task",
+              "fullTitle": "To do list Create task",
+              "timedOut": null,
+              "duration": 4897,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_toDoListPage.default.typeTask(task.task1);\n_toDoListPage.default.clickSendBtn();\ncy.wait(900);\n_toDoListPage.default.typeTask(task.task2);\n_toDoListPage.default.clickSendBtn();\ncy.wait(900);\n_toDoListPage.default.typeTask(task.task3);\n_toDoListPage.default.clickSendBtn();\ncy.wait(900);",
+              "err": {},
+              "uuid": "82b414b7-5b8a-455b-ae79-a2886d6e3eee",
+              "parentUUID": "f098fb32-9abd-4667-bf3a-c34ffbb71029",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Cross out task",
+              "fullTitle": "To do list Cross out task",
+              "timedOut": null,
+              "duration": 4565,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_toDoListPage.default.clickTask(task.task1);\ncy.wait(900);\n_toDoListPage.default.clickTask(task.task2);\ncy.wait(900);\n_toDoListPage.default.clickTask(task.task3);\ncy.wait(900);",
+              "err": {},
+              "uuid": "6bb74326-ebf2-46da-92f3-9f92e55a4459",
+              "parentUUID": "f098fb32-9abd-4667-bf3a-c34ffbb71029",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete task",
+              "fullTitle": "To do list Delete task",
+              "timedOut": null,
+              "duration": 4535,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_toDoListPage.default.clickDeleteBtn(task.task1);\ncy.wait(900);\n_toDoListPage.default.clickDeleteBtn(task.task2);\ncy.wait(900);\n_toDoListPage.default.clickDeleteBtn(task.task3);\ncy.wait(900);",
+              "err": {},
+              "uuid": "65e2235e-d096-4975-94d2-add5a3c176fa",
+              "parentUUID": "f098fb32-9abd-4667-bf3a-c34ffbb71029",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "82b414b7-5b8a-455b-ae79-a2886d6e3eee",
+            "6bb74326-ebf2-46da-92f3-9f92e55a4459",
+            "65e2235e-d096-4975-94d2-add5a3c176fa"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 13997,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "5be720b2-0b0e-4846-82dd-0e725850650f",
+          "title": "Time tracker",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate 5 seconds messages in real time",
+              "fullTitle": "Time tracker Validate 5 seconds messages in real time",
+              "timedOut": null,
+              "duration": 11444,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_waitsPage.default.colorAlerts(_consts.default.waitsPage.alert5);",
+              "err": {},
+              "uuid": "507f7601-c1e0-459a-8a5c-fa34c51a841b",
+              "parentUUID": "5be720b2-0b0e-4846-82dd-0e725850650f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate 10 seconds messages in real time",
+              "fullTitle": "Time tracker Validate 10 seconds messages in real time",
+              "timedOut": null,
+              "duration": 11801,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_waitsPage.default.alerts(_consts.default.waitsPage.alert10);",
+              "err": {},
+              "uuid": "667d8023-4b63-4807-805f-6221ab479ab8",
+              "parentUUID": "5be720b2-0b0e-4846-82dd-0e725850650f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate 50 seconds messages in real time",
+              "fullTitle": "Time tracker Validate 50 seconds messages in real time",
+              "timedOut": null,
+              "duration": 16638,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_waitsPage.default.alerts(_consts.default.waitsPage.alert50), {\n  timeout: 60000\n};",
+              "err": {},
+              "uuid": "98777ea9-b054-407f-822d-502c4677ba4a",
+              "parentUUID": "5be720b2-0b0e-4846-82dd-0e725850650f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "507f7601-c1e0-459a-8a5c-fa34c51a841b",
+            "667d8023-4b63-4807-805f-6221ab479ab8",
+            "98777ea9-b054-407f-822d-502c4677ba4a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 39883,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "1ced4293-cf64-4ff5-9824-0cfa29d3a55f",
+          "title": "Alerts, prompts and confirmations pop ups",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Window alert validation",
+              "fullTitle": "Alerts, prompts and confirmations pop ups Window alert validation",
+              "timedOut": null,
+              "duration": 1776,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_alertsPage.default.handleAlert(\"This is an alert message\");\n_alertsPage.default.clickAlertBtn();",
+              "err": {},
+              "uuid": "34853cfb-1d9a-454b-b7b7-d78265b78ea3",
+              "parentUUID": "1ced4293-cf64-4ff5-9824-0cfa29d3a55f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Window prompt validation",
+              "fullTitle": "Alerts, prompts and confirmations pop ups Window prompt validation",
+              "timedOut": null,
+              "duration": 1294,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_alertsPage.default.handlePrompt(\"Mensaje de prueba\");\n_alertsPage.default.clickPromptBtn();",
+              "err": {},
+              "uuid": "7ef2801b-574e-4cdf-80dc-72ac84afe4de",
+              "parentUUID": "1ced4293-cf64-4ff5-9824-0cfa29d3a55f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Window confirmation validation",
+              "fullTitle": "Alerts, prompts and confirmations pop ups Window confirmation validation",
+              "timedOut": null,
+              "duration": 1593,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_alertsPage.default.handleConfirmation(\"This is a confirmation message\");\n_alertsPage.default.clickConfirmationBtn();",
+              "err": {},
+              "uuid": "ddefe46c-5289-4d1e-b918-1a88e2c1331e",
+              "parentUUID": "1ced4293-cf64-4ff5-9824-0cfa29d3a55f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "34853cfb-1d9a-454b-b7b7-d78265b78ea3",
+            "7ef2801b-574e-4cdf-80dc-72ac84afe4de",
+            "ddefe46c-5289-4d1e-b918-1a88e2c1331e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4663,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\mochawesome-report\\.jsons",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

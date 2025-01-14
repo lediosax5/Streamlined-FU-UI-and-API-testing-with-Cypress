@@ -3,7 +3,9 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on('before:run', () => {
+        require('cypress-mochawesome-reporter/plugin')(on);
+      });
     },
     specPattern: "cypress/e2e/*.{js,feature}",
     baseUrl: 'https://pushing-it.vercel.app/',
@@ -13,16 +15,16 @@ module.exports = defineConfig({
     chromeWebSecurity: false,
     watchForFileChanges: false,
     retries: 1,
-    reporter: 'mochawesome',
+    reporter: 'cypress-mochawesome-reporter',
     reporterOptions: {
-      reportDir: 'cypress/reports',
+      reportDir: 'cypress/reports/mochawesome-report',
       overwrite: false,
-      html: false,
-      json: true
+      html: true,
+      json: true,
     },
     env: {
       user: 'pushingit',
-      pass: '123456!'
-    }
-  }
+      pass: '123456!',
+    },
+  },
 });
