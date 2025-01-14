@@ -12,10 +12,17 @@ module.exports = defineConfig({
     defaultCommandTimeout: 21000,
     chromeWebSecurity: false,
     watchForFileChanges: false,
-    retries: 1
-  },
-  env: {
-    user: 'pushingit',
-    pass: '123456!'
+    retries: 1,
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: false,
+      json: true
+    },
+    env: {
+      user: 'pushingit',
+      pass: '123456!'
+    }
   }
 });
