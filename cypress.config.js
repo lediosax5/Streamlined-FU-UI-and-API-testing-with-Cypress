@@ -2,10 +2,8 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-      on('before:run', () => {
-        require('cypress-mochawesome-reporter/plugin')(on);
-      });
+    setupNodeEvents(on) {
+      require('cypress-mochawesome-reporter/plugin')(on);
     },
     specPattern: "cypress/e2e/*.{js,feature}",
     baseUrl: 'https://pushing-it.vercel.app/',
@@ -21,10 +19,6 @@ module.exports = defineConfig({
       overwrite: false,
       html: true,
       json: true,
-    },
-    env: {
-      user: 'pushingit',
-      pass: '123456!',
     },
   },
 });

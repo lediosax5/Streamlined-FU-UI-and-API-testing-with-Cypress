@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Cypress generated output
+cypress/downloads/
+cypress/screenshots/
+cypress/videos/
+cypress/reports/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

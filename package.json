@@ -1,1 +1,21 @@
-{"scripts":{"sample":"echo \"Error: no test specified\" && exit 1","chr":"npx cypress open --e2e -b chrome","ele":"npx cypress open --e2e -b electron"},"devDependencies":{"cypress":"^13.17.0","cypress-mochawesome-reporter":"^3.8.2","cypress-xpath":"^2.0.1","mochawesome":"^7.1.3","mochawesome-merge":"^4.3.0","mochawesome-report-generator":"^6.2.0"},"dependencies":{"dotenv":"^16.4.7"}}
+{
+  "name": "streamlined-fu-ui-and-api-testing-with-cypress",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "cy:open": "cypress open --e2e -b chrome",
+    "cy:open:electron": "cypress open --e2e -b electron",
+    "cy:run": "cypress run --e2e"
+  },
+  "devDependencies": {
+    "cypress": "^13.17.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-xpath": "^2.0.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}

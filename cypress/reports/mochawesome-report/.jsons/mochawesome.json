@@ -1,33 +1,111 @@
 {
   "stats": {
-    "suites": 2,
-    "tests": 2,
-    "passes": 2,
+    "suites": 9,
+    "tests": 10,
+    "passes": 3,
     "pending": 0,
-    "failures": 0,
-    "start": "2025-01-14T04:39:20.339Z",
-    "end": "2025-01-14T04:39:22.869Z",
-    "duration": 2530,
-    "testsRegistered": 2,
-    "passPercent": 100,
+    "failures": 7,
+    "start": "2026-09-30T00:50:17.867Z",
+    "end": "2026-09-30T00:50:53.087Z",
+    "duration": 35220,
+    "testsRegistered": 16,
+    "passPercent": 18.75,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
-    "skipped": 0,
-    "hasSkipped": false
+    "skipped": 6,
+    "hasSkipped": true
   },
   "results": [
     {
-      "uuid": "634802e7-f8b8-4ff4-857c-35908d4bc955",
+      "uuid": "bc03ea0c-00fe-4ea3-afbb-cbe8a0bc509a",
       "title": "",
-      "fullFile": "cypress\\e2e\\login.js",
-      "file": "cypress\\e2e\\login.js",
+      "fullFile": "cypress\\e2e\\showcase.js",
+      "file": "cypress\\e2e\\showcase.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "33bef35d-9324-47b6-ab6f-5c60c6dd3f99",
+          "uuid": "10fd3e20-f942-4ebd-af0b-07254ca9bca0",
+          "title": "UI register",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Register user",
+              "fullTitle": "UI register Register user",
+              "timedOut": null,
+              "duration": 3862,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"\");\n_registerPage.default.typeUser(\"cami\" + Date.now());\n_registerPage.default.typePass(\"pass123\" + \"!\");\n_registerPage.default.checkGender(\"Female\");\n_registerPage.default.selectDay(31);\n_registerPage.default.selectMonth(\"May\");\n_registerPage.default.selectYear(\"1980\");\n_registerPage.default.clickRegisterBtn();\n_headerPage.default.verifyUser(\"cami\");",
+              "err": {},
+              "uuid": "f903a6e5-8691-45a2-b177-b3934ab0f4cb",
+              "parentUUID": "10fd3e20-f942-4ebd-af0b-07254ca9bca0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f903a6e5-8691-45a2-b177-b3934ab0f4cb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3862,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "e26ed000-3fbc-4be9-8600-4b03923233bc",
+          "title": "API register",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "API register user",
+              "fullTitle": "API register API register user",
+              "timedOut": null,
+              "duration": 323,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.registerUser(user.a.username, user.a.password, user.a.gender, user.a.day, user.a.month, user.a.year).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.newUser.username).to.be.equal(user.a.username);\n});",
+              "err": {},
+              "uuid": "446f7f2d-fd69-4a22-bd2c-443016b36c58",
+              "parentUUID": "e26ed000-3fbc-4be9-8600-4b03923233bc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "446f7f2d-fd69-4a22-bd2c-443016b36c58"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 323,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "d701d3e6-77c3-4715-bde9-692d993dfec5",
           "title": "UI login",
           "fullFile": "",
           "file": "",
@@ -38,35 +116,105 @@
               "title": "Login",
               "fullTitle": "UI login Login",
               "timedOut": null,
-              "duration": 2002,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
+              "duration": 416,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "cy.visit(\"\");\n_registerPage.default.clickLoginBtn();\n_loginPage.default.typeUser(Cypress.env().user);\n_loginPage.default.typePass(Cypress.env().pass);\n_loginPage.default.clickLoginBtn();\n_headerPage.default.verifyUser(Cypress.env().user);",
-              "err": {},
-              "uuid": "82409929-38d5-4eb1-86e5-996d16b9e926",
-              "parentUUID": "33bef35d-9324-47b6-ab6f-5c60c6dd3f99",
+              "err": {
+                "message": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type",
+                "estack": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n    at Context.type (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:115380:68)\n    at wrapped (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:138092:19)\nFrom Your Spec Code:\n    at loginPage.typeUser (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/support/pages/loginPage.js:9:22)\n    at Context.eval (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/e2e/showcase.js:56:18)",
+                "diff": null
+              },
+              "uuid": "cf8b2b39-1000-4395-82bd-7bd00ec61da9",
+              "parentUUID": "d701d3e6-77c3-4715-bde9-692d993dfec5",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "82409929-38d5-4eb1-86e5-996d16b9e926"
+          "passes": [],
+          "failures": [
+            "cf8b2b39-1000-4395-82bd-7bd00ec61da9"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2002,
+          "duration": 416,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "d409d4ac-555d-4981-91d8-9c5eda729ee9",
+          "uuid": "53b7c6f7-1353-44ea-ac5a-1689be918fb3",
+          "title": "UI negative login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login wrong password",
+              "fullTitle": "UI negative login Login wrong password",
+              "timedOut": null,
+              "duration": 517,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_loginPage.default.typeUser(Cypress.env().user);\n_loginPage.default.typePass(\"badpassword\");\n_loginPage.default.clickLoginBtn();\n_loginPage.default.alerts(_consts.default.loginPage.alertPass);",
+              "err": {
+                "message": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type",
+                "estack": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n    at Context.type (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:115380:68)\n    at wrapped (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:138092:19)\nFrom Your Spec Code:\n    at loginPage.typeUser (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/support/pages/loginPage.js:9:22)\n    at Context.eval (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/e2e/showcase.js:70:18)",
+                "diff": null
+              },
+              "uuid": "51770a6d-bde2-4b7d-8fe8-04dc692c8ba7",
+              "parentUUID": "53b7c6f7-1353-44ea-ac5a-1689be918fb3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login wrong credentials",
+              "fullTitle": "UI negative login Login wrong credentials",
+              "timedOut": null,
+              "duration": 632,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_loginPage.default.typeUser(\"guido10\");\n_loginPage.default.typePass(Cypress.env().pass);\n_loginPage.default.clickLoginBtn();\n_loginPage.default.alerts(_consts.default.loginPage.alertCredentials);",
+              "err": {
+                "message": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type",
+                "estack": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n    at Context.type (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:115380:68)\n    at wrapped (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:138092:19)\nFrom Your Spec Code:\n    at loginPage.typePass (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/support/pages/loginPage.js:13:22)\n    at Context.eval (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/e2e/showcase.js:77:18)",
+                "diff": null
+              },
+              "uuid": "1cc85fe3-6d8d-4057-b727-9783043416f7",
+              "parentUUID": "53b7c6f7-1353-44ea-ac5a-1689be918fb3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "51770a6d-bde2-4b7d-8fe8-04dc692c8ba7",
+            "1cc85fe3-6d8d-4057-b727-9783043416f7"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1149,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "3722c547-5f70-403b-8192-6fbf2c763c7e",
           "title": "API login",
           "fullFile": "",
           "file": "",
@@ -77,29 +225,318 @@
               "title": "API login",
               "fullTitle": "API login API login",
               "timedOut": null,
-              "duration": 489,
+              "duration": 393,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginUser(Cypress.env().user, Cypress.env().pass).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.user.username).to.be.equal(Cypress.env().user);\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://pushing-it.onrender.com/api/login\n\nThe response we received from your web server was:\n\n  > 401: Unauthorized\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://pushing-it.onrender.com/api/login\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/13.17.0 Chrome/118.0.5993.159 Electron/27.3.10 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 2\n}\nBody: {}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 401 - Unauthorized\nHeaders: {\n  \"date\": \"Wed, 30 Sep 2026 00:50:49 GMT\",\n  \"content-type\": \"text/html; charset=utf-8\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"access-control-allow-headers\": \"Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method\",\n  \"access-control-allow-methods\": \"GET, POST, OPTIONS, PUT, DELETE\",\n  \"access-control-allow-origin\": \"*\",\n  \"allow\": \"GET, POST, OPTIONS, PUT, DELETE\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"etag\": \"W/\\\"1a-wOq82aP7n5dUMTCZDxh9Mue2Slg\\\"\",\n  \"rndr-id\": \"e2e785dd-cc50-4810\",\n  \"server\": \"cloudflare\",\n  \"vary\": \"Accept-Encoding\",\n  \"x-powered-by\": \"Express\",\n  \"x-render-origin-server\": \"Render\",\n  \"cf-ray\": \"a42f3c507d778e4f-EZE\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400\"\n}\nBody: Credentials were not found\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://pushing-it.onrender.com/api/login\n\nThe response we received from your web server was:\n\n  > 401: Unauthorized\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://pushing-it.onrender.com/api/login\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/13.17.0 Chrome/118.0.5993.159 Electron/27.3.10 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 2\n}\nBody: {}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 401 - Unauthorized\nHeaders: {\n  \"date\": \"Wed, 30 Sep 2026 00:50:49 GMT\",\n  \"content-type\": \"text/html; charset=utf-8\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"access-control-allow-headers\": \"Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method\",\n  \"access-control-allow-methods\": \"GET, POST, OPTIONS, PUT, DELETE\",\n  \"access-control-allow-origin\": \"*\",\n  \"allow\": \"GET, POST, OPTIONS, PUT, DELETE\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"etag\": \"W/\\\"1a-wOq82aP7n5dUMTCZDxh9Mue2Slg\\\"\",\n  \"rndr-id\": \"e2e785dd-cc50-4810\",\n  \"server\": \"cloudflare\",\n  \"vary\": \"Accept-Encoding\",\n  \"x-powered-by\": \"Express\",\n  \"x-render-origin-server\": \"Render\",\n  \"cf-ray\": \"a42f3c507d778e4f-EZE\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400\"\n}\nBody: Credentials were not found\n\n\nhttps://on.cypress.io/request\n    at <unknown> (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:132876:72)\n    at tryCatcher (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:1724:18)\n    at _drainQueueStep (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/support/commands.js:43:7)",
+                "diff": null
+              },
+              "uuid": "d9bd599d-0a3a-4288-ac10-1454d76fb862",
+              "parentUUID": "3722c547-5f70-403b-8192-6fbf2c763c7e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "d9bd599d-0a3a-4288-ac10-1454d76fb862"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 393,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "e1b1ee99-b827-4df3-a378-d08cc44e6bc6",
+          "title": "API register, login and delete with validations and variable user",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "API register, login and delete user",
+              "fullTitle": "API register, login and delete with validations and variable user API register, login and delete user",
+              "timedOut": null,
+              "duration": 761,
               "state": "passed",
               "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.loginUser(Cypress.env().user, Cypress.env().pass).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.user.username).to.be.equal(Cypress.env().user);\n});",
+              "code": "cy.registerUser(user.a.username, user.a.password, user.a.gender, user.a.day, user.a.month, user.a.year).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.newUser.username).to.be.equal(user.a.username);\n});\ncy.loginUser(user.a.username, user.a.password).then(response => {\n  cy.log(response);\n  expect(response.status).to.be.equal(201);\n  expect(response.body.user.username).to.be.equal(user.a.username);\n  token = response.body.token;\n  window.localStorage.setItem(\"token\", token);\n  window.localStorage.setItem(\"user\", response.body.user.username);\n  window.localStorage.setItem(\"userId\", response.body.user._id);\n});\ncy.visit(\"\");",
               "err": {},
-              "uuid": "7f13219e-3f9d-420c-9c9f-b56e0faf8520",
-              "parentUUID": "d409d4ac-555d-4981-91d8-9c5eda729ee9",
+              "uuid": "1d792c6a-b18e-4a75-a4d9-3686c49a353c",
+              "parentUUID": "e1b1ee99-b827-4df3-a378-d08cc44e6bc6",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "7f13219e-3f9d-420c-9c9f-b56e0faf8520"
+            "1d792c6a-b18e-4a75-a4d9-3686c49a353c"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 489,
+          "duration": 761,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "388e686a-447a-476d-92ca-4498a50af2b8",
+          "title": "To do list",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create task",
+              "fullTitle": "To do list Create task",
+              "timedOut": null,
+              "duration": 486,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_toDoListPage.default.typeTask(task.task1);\n_toDoListPage.default.clickSendBtn();\ncy.wait(900);\n_toDoListPage.default.typeTask(task.task2);\n_toDoListPage.default.clickSendBtn();\ncy.wait(900);\n_toDoListPage.default.typeTask(task.task3);\n_toDoListPage.default.clickSendBtn();\ncy.wait(900);",
+              "err": {
+                "message": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `To do list`",
+                "estack": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `To do list`\n    at Context.type (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:115380:68)\n    at wrapped (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:138092:19)\nFrom Your Spec Code:\n    at loginPage.login (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/support/pages/loginPage.js:21:22)\n    at Context.eval (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/e2e/showcase.js:140:18)",
+                "diff": null
+              },
+              "uuid": "a4a68fea-3390-45af-9f20-1711e10a9752",
+              "parentUUID": "388e686a-447a-476d-92ca-4498a50af2b8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Cross out task",
+              "fullTitle": "To do list Cross out task",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_toDoListPage.default.clickTask(task.task1);\ncy.wait(900);\n_toDoListPage.default.clickTask(task.task2);\ncy.wait(900);\n_toDoListPage.default.clickTask(task.task3);\ncy.wait(900);",
+              "err": {},
+              "uuid": "412f01a6-6f0d-4843-937e-82c27e677253",
+              "parentUUID": "388e686a-447a-476d-92ca-4498a50af2b8",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Delete task",
+              "fullTitle": "To do list Delete task",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_toDoListPage.default.clickDeleteBtn(task.task1);\ncy.wait(900);\n_toDoListPage.default.clickDeleteBtn(task.task2);\ncy.wait(900);\n_toDoListPage.default.clickDeleteBtn(task.task3);\ncy.wait(900);",
+              "err": {},
+              "uuid": "17e661a0-5ddb-4032-8c2e-e8d4d7ae03ae",
+              "parentUUID": "388e686a-447a-476d-92ca-4498a50af2b8",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "a4a68fea-3390-45af-9f20-1711e10a9752"
+          ],
+          "pending": [],
+          "skipped": [
+            "412f01a6-6f0d-4843-937e-82c27e677253",
+            "17e661a0-5ddb-4032-8c2e-e8d4d7ae03ae"
+          ],
+          "duration": 486,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "1aedfb29-3188-4be6-8872-8b24e3b394d7",
+          "title": "Time tracker",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate 5 seconds messages in real time",
+              "fullTitle": "Time tracker Validate 5 seconds messages in real time",
+              "timedOut": null,
+              "duration": 470,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_waitsPage.default.colorAlerts(_consts.default.waitsPage.alert5);",
+              "err": {
+                "message": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Time tracker`",
+                "estack": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Time tracker`\n    at Context.type (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:115380:68)\n    at wrapped (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:138092:19)\nFrom Your Spec Code:\n    at loginPage.login (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/support/pages/loginPage.js:21:22)\n    at Context.eval (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/e2e/showcase.js:180:18)",
+                "diff": null
+              },
+              "uuid": "6c6a6e6a-5544-40d2-a71f-157ac66ff15b",
+              "parentUUID": "1aedfb29-3188-4be6-8872-8b24e3b394d7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate 10 seconds messages in real time",
+              "fullTitle": "Time tracker Validate 10 seconds messages in real time",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_waitsPage.default.alerts(_consts.default.waitsPage.alert10);",
+              "err": {},
+              "uuid": "f7436a5f-3486-476b-9069-0f8ef3668726",
+              "parentUUID": "1aedfb29-3188-4be6-8872-8b24e3b394d7",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Validate 50 seconds messages in real time",
+              "fullTitle": "Time tracker Validate 50 seconds messages in real time",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_waitsPage.default.alerts(_consts.default.waitsPage.alert50), {\n  timeout: 60000\n};",
+              "err": {},
+              "uuid": "f595c82b-8e83-45cf-9cff-e6441b90c298",
+              "parentUUID": "1aedfb29-3188-4be6-8872-8b24e3b394d7",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "6c6a6e6a-5544-40d2-a71f-157ac66ff15b"
+          ],
+          "pending": [],
+          "skipped": [
+            "f7436a5f-3486-476b-9069-0f8ef3668726",
+            "f595c82b-8e83-45cf-9cff-e6441b90c298"
+          ],
+          "duration": 470,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "c0c19370-4fa8-45b2-ad61-8e8a37bed9ce",
+          "title": "Alerts, prompts and confirmations pop ups",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Window alert validation",
+              "fullTitle": "Alerts, prompts and confirmations pop ups Window alert validation",
+              "timedOut": null,
+              "duration": 455,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_alertsPage.default.handleAlert(\"This is an alert message\");\n_alertsPage.default.clickAlertBtn();",
+              "err": {
+                "message": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Alerts, prompts and confirm...`",
+                "estack": "CypressError: `cy.type()` can only accept a string or number. You passed in: `undefined`\n\nhttps://on.cypress.io/type\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Alerts, prompts and confirm...`\n    at Context.type (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:115380:68)\n    at wrapped (https://pushing-it.vercel.app/__cypress/runner/cypress_runner.js:138092:19)\nFrom Your Spec Code:\n    at loginPage.login (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/support/pages/loginPage.js:21:22)\n    at Context.eval (webpack://streamlined-fu-ui-and-api-testing-with-cypress/./cypress/e2e/showcase.js:204:18)",
+                "diff": null
+              },
+              "uuid": "c0717f35-2d0a-493f-be97-fa0d4d543182",
+              "parentUUID": "c0c19370-4fa8-45b2-ad61-8e8a37bed9ce",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Window prompt validation",
+              "fullTitle": "Alerts, prompts and confirmations pop ups Window prompt validation",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_alertsPage.default.handlePrompt(\"Mensaje de prueba\");\n_alertsPage.default.clickPromptBtn();",
+              "err": {},
+              "uuid": "e211efa8-bf9c-45e0-ab9e-c0b08667fa91",
+              "parentUUID": "c0c19370-4fa8-45b2-ad61-8e8a37bed9ce",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Window confirmation validation",
+              "fullTitle": "Alerts, prompts and confirmations pop ups Window confirmation validation",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_alertsPage.default.handleConfirmation(\"This is a confirmation message\");\n_alertsPage.default.clickConfirmationBtn();",
+              "err": {},
+              "uuid": "3caa84ca-783c-4dd8-8661-1be1dd5d63ce",
+              "parentUUID": "c0c19370-4fa8-45b2-ad61-8e8a37bed9ce",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "c0717f35-2d0a-493f-be97-fa0d4d543182"
+          ],
+          "pending": [],
+          "skipped": [
+            "e211efa8-bf9c-45e0-ab9e-c0b08667fa91",
+            "3caa84ca-783c-4dd8-8661-1be1dd5d63ce"
+          ],
+          "duration": 455,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
